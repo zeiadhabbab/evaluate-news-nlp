@@ -50,7 +50,7 @@ async  function handleSubmit(event) {
                 throw new Error(`Failed to fetch recent entry: ${response.status}`);
             }
             const { object, msg, code } = await response.json();
-            if(object != null || code === 0 || code === 200){
+            if(code === 200){
                 hideErrors();
                 showLoader(false);
                 loaderText.stop();

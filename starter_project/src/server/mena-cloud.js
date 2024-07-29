@@ -1,42 +1,49 @@
 const meaningCloudApiUrl = "https://api.meaningcloud.com/sentiment-2.1";
 
-const axios = require("axios");
 
 
 menaCloud = async (url, key) => {
     // the URL=`${BASE_API_URL}?key=${MEAN_CLOUD_API_KEY}&url=${req.body.url}&lang=en`
     // Documntaion here https://www.meaningcloud.com/developer/
-    
-    let resut = await axios.get(`${meaningCloudApiUrl}?key=${key}&url=${url}&lang=en`)
-        .then(function (response) {
-            const { code } = response.data.status
-            //handle errors
-            if (code == 100) {
-                //Server Side Validation
-                const error = handleErrorStatus(code, "Please enter a valid URL")
-                return error
-            } else if (code == 212) {
-                const error = handleErrorStatus(code, response.data.status.msg)
-                return error
-            }
-            return successResponse(response.data, code)
-        })
-    return resut;
+    let fullUrl = `${meaningCloudApiUrl}?key=${key}&url=${url}&lang=en`;
+
+    const response = await fetch(fullUrl, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+
+    let data = null;
+    data = await response.json();
+    const code = data.status.code;
+
+    console.log(data.status.code);
+  
+    if (code == 100) {
+        //Server Side Validation
+        const error = onErrorStatus(100, "Please enter a valid URL ...");
+        return  error;
+    } else if (code == 212) {
+        const error = onErrorStatus(212, data.status.msg);
+        return  error;
+    }
+
+    return onSuccess(data, code);
 }
 
 
-const handleErrorStatus = (code, msg) => {
+const onErrorStatus = (code, msg) => {
     const error = {
         object: null,
         msg: msg,
         code: code
-        
     }
     return error;
 }
 
 //get the data from APi and  and send it to the client to show to user
-const successResponse = (res, code) =>{
+const onSuccess = (res) =>{
     const { agreement, confidence, score_tag,  subjectivity,  irony } = res;
 
     let object = {
@@ -46,10 +53,9 @@ const successResponse = (res, code) =>{
         confidence: confidence,
         irony: irony
     }
-    result = { object:object, msg:'', code: code };
+    result = { object:object, msg:'success', code: 200 };
 
     return result;
-
 }
 
 module.exports = {
