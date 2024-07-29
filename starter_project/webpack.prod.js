@@ -41,7 +41,11 @@ module.exports = {
             template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
-        new WorkboxPlugin.GenerateSW()
+        new WorkboxPlugin.GenerateSW({
+            clientsClaim: true,
+            skipWaiting: true
+        }),
+        new MiniCssExtractPlugin()
     ],
     devServer: {
         port: 3000,
