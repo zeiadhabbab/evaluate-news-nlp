@@ -5,6 +5,8 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 
 module.exports = {
     entry: './src/client/index.js',
@@ -18,7 +20,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: [ MiniCssExtractPlugin.loader, 'style-loader', 'css-loader', 'sass-loader' ]
+                use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
         }
         ]
     },
@@ -31,10 +33,7 @@ module.exports = {
     },
     optimization: {
         minimize: true,
-        minimizer: [
-            new CssMinimizerPlugin(),
-            new TerserPlugin()
-        ],
+        minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
     },
     plugins: [
         new HtmlWebPackPlugin({
