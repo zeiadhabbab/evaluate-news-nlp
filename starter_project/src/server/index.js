@@ -31,8 +31,6 @@ app.post("/getData", async (req, res) => {
     // 2. Fetch Data from API by sending the url and the key
     const menaCloudResult = await menaCloud(url, API_KEY);
 
-    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>menaCloudResult");
-    console.log(menaCloudResult);
 
     const {object, msg , code} = menaCloudResult;
     //send errors if result was wrong

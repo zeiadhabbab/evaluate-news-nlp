@@ -10,12 +10,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="title" content="Evaluate A News Article with Natural Language Processing">
+    <meta name="description" content="Article Analyzer is a web tool that allows users to run Natural Language Processing (NLP) on articles by url. Using an API called meaning cloud">
+    <meta name="keywords" content="NLP,meaning cloud,udacity,node,express">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="10 days">
+    <meta name="author" content="Zeyad Habbab">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://evaluate-news-nlp-one.vercel.app/" />
+    <meta property="og:title" content="Evaluate A News Article with Natural Language Processing" />
+    <meta property="og:description" content="Evaluate A News Article with Natural Language Processing">
+    <meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://evaluate-news-nlp-one.vercel.app/" />
+    <meta property="twitter:title" content="Evaluate A News Article with Natural Language Processing" />
+    <meta property="twitter:description" content="Evaluate A News Article with Natural Language Processing">
+    <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
+
 </head>
 
 <body>
-
-
-
 
     <header class="container-fluid shadow-sm">
         <div class="container d-flex flex-wrap justify-content-center py-3">
@@ -24,12 +44,12 @@
                 <svg class="bi me-2" width="40" height="32">
                     <use xlink:href="#bootstrap"></use>
                 </svg>
-                <span class="fs-4">Article Analayzer</span>
+                <span class="fs-4">Article Analyzer</span>
             </a>
 
             <ul class="nav nav-pills">
-                <li class="nav-item"><a href="#" class="nav-link">Source code</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Linkdin</a></li>
+                <li class="nav-item"><a href="https://github.com/zeiadhabbab/evaluate-news-nlp" class="nav-link">Source code</a></li>
+                <li class="nav-item"><a href="https://www.linkedin.com/in/zeiad-habbab/" class="nav-link">Linkdin</a></li>
             </ul>
         </div>
     </header>
@@ -42,13 +62,15 @@
                     <i class="fa fa-spinner fa-spin spinner"></i>
                 </div>
                 <h5 class="mb-3">
-                   Please insert valid url so the Article Analayzer can start work.
+                    Insert a valid URL to enable the Article Analyzer to start its process.
                 </h5>
                 <input id="url" class="form-control form-control-lg mb-3" type="text" name="url" placeholder="Enter URL" >
                 <div class="alert alert-danger hidden" role="alert" id="errorMsg">
                     Please insert a valid url!
                 </div>    
                 <button id="submitButton" type="submit" class="w-100 btn btn-md btn-primary">Submit</button>
+
+                <div class="build-text">Built With L♥VE</div>
             </form>
 
             
@@ -63,12 +85,12 @@
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
           <div class="col-md-4 d-flex align-items-center">
-            <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Article Analayzer, Inc</span>
+            <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Article Analyzer</span>
           </div>
       
           <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-            <li class="ms-3"><a class="text-body-secondary" href="#"><i class="fab fa-facebook fa-fw"></i></a></li>
-            <li class="ms-3"><a class="text-body-secondary" href="#"><i class="fab fa-linkedin fa-fw"></i></a></li>
+            <li class="ms-3"><a class="text-body-secondary" href="https://github.com/zeiadhabbab"><i class="fab fa-github fa-fw"></i></a></li>
+            <li class="ms-3"><a class="text-body-secondary" href="https://www.linkedin.com/in/zeiad-habbab/"><i class="fab fa-linkedin fa-fw"></i></a></li>
           </ul>
         </footer>
       </div>
