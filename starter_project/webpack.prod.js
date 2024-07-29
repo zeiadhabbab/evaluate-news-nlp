@@ -2,6 +2,9 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
     entry: './src/client/index.js',
@@ -15,16 +18,33 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+                use: [ MiniCssExtractPlugin.loader, 'style-loader', 'css-loader', 'sass-loader' ]
         }
         ]
+    },
+    output: {
+        filename: 'bundle.[contenthash].js',
+        path: path.resolve(__dirname, 'dist'),
+        libraryTarget: 'var',
+        library: 'Client',
+        clean: true,
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new CssMinimizerPlugin(),
+            new TerserPlugin()
+        ],
     },
     plugins: [
         new HtmlWebPackPlugin({
             template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
-        new WorkboxPlugin.GenerateSW()
+        new WorkboxPlugin.GenerateSW(),
+        new MiniCssExtractPlugin({
+            filename: 'style.[contenthash].css'
+        })
     ],
     devServer: {
         port: 3000,
