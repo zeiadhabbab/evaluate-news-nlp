@@ -8,7 +8,6 @@ const isValidUrl = urlString=> {
 return !!urlPattern.test(urlString);
 }
 
-
 function checkForUrl(inputText) {
     return isValidUrl(inputText);
 }
