@@ -41,10 +41,7 @@ module.exports = {
             template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
-        new WorkboxPlugin.GenerateSW(),
-        new MiniCssExtractPlugin({
-            filename: 'style.[contenthash].css'
-        })
+        new WorkboxPlugin.GenerateSW()
     ],
     devServer: {
         port: 3000,
